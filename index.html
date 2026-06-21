@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAWA'S Reinigungsservice – Paderborn</title>
+<meta name="description" content="KAWA'S Reinigungsservice in Paderborn – professionelle Gebäude-, Büro- und Unterhaltsreinigung für Privat- und Geschäftskunden.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A2F4A;
+    --navy-deep:#072133;
+    --blue:#1E88C7;
+    --sky:#6EC8EC;
+    --ice:#EAF6FC;
+    --white:#FFFFFF;
+    --ink:#14202B;
+    --gray:#5C6B76;
+    --radius:22px;
+    --shadow:0 18px 40px -18px rgba(10,47,74,.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Poppins',sans-serif;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--blue);
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px;height:2px;
+    background:var(--sky);
+    border-radius:2px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 28px;
+    border-radius:999px;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:.95rem;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  }
+  .btn:focus-visible{outline:3px solid var(--sky);outline-offset:2px;}
+  .btn-primary{
+    background:var(--blue);
+    color:var(--white);
+    box-shadow:0 14px 30px -10px rgba(30,136,199,.55);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 34px -10px rgba(30,136,199,.6);}
+  .btn-ghost{
+    background:transparent;
+    color:var(--white);
+    border-color:rgba(255,255,255,.45);
+  }
+  .btn-ghost:hover{border-color:var(--white);transform:translateY(-2px);}
+  .btn-dark{
+    background:var(--navy);
+    color:var(--white);
+  }
+  .btn-dark:hover{transform:translateY(-2px);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:60;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #eef2f5;
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 28px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .brand-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.05;
+  }
+  .brand-text strong{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:1.18rem;
+    color:var(--navy);
+    letter-spacing:-0.01em;
+  }
+  .brand-text span{
+    font-size:.66rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gray);
+    font-weight:600;
+  }
+  .navlinks{
+    display:flex;
+    align-items:center;
+    gap:34px;
+  }
+  .navlinks a{
+    font-weight:600;
+    font-size:.92rem;
+    color:var(--navy);
+    position:relative;
+    padding:6px 0;
+  }
+  .navlinks a::after{
+    content:"";
+    position:absolute;
+    left:0;bottom:0;
+    width:0%;height:2px;
+    background:var(--blue);
+    transition:width .2s ease;
+  }
+  .navlinks a:hover::after{width:100%;}
+  .nav-cta{display:flex;align-items:center;gap:18px;}
+  .nav-cta .btn{padding:11px 22px;font-size:.88rem;}
+  .nav-cta .btn-primary{background:var(--navy);}
+  .burger{
+    display:none;
+    background:none;border:none;cursor:pointer;
+    width:40px;height:40px;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+  }
+  .burger span{width:24px;height:2px;background:var(--navy);border-radius:2px;transition:.2s;}
+
+  @media (max-width:880px){
+    .navlinks{
+      position:absolute;
+      top:100%;left:0;right:0;
+      background:var(--white);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:18px 28px 26px;
+      gap:16px;
+      border-bottom:1px solid #eef2f5;
+      box-shadow:0 18px 30px -20px rgba(0,0,0,.2);
+      display:none;
+    }
+    .navlinks.open{display:flex;}
+    .nav-cta{display:none;}
+    .burger{display:flex;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:radial-gradient(120% 140% at 80% -10%, #14517a 0%, var(--navy) 45%, var(--navy-deep) 100%);
+    color:var(--white);
+    overflow:hidden;
+    padding:96px 0 120px;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.25) 0, transparent 60%),
+      radial-gradient(2px 2px at 80% 70%, rgba(255,255,255,.18) 0, transparent 60%),
+      radial-gradient(1.5px 1.5px at 60% 15%, rgba(255,255,255,.22) 0, transparent 60%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-copy .eyebrow{color:var(--sky);}
+  .hero-copy .eyebrow::before{background:var(--sky);}
+  .wipe-wrap{
+    position:relative;
+    margin-top:18px;
+    overflow:hidden;
+  }
+  .wipe-headline{
+    font-size:clamp(2.4rem, 4.6vw, 3.7rem);
+    font-weight:800;
+    color:var(--white);
+  }
+  .wipe-headline em{
+    font-style:normal;
+    color:var(--sky);
+  }
+  .wipe-veil{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.85) 45%, rgba(255,255,255,0) 60%);
+    mix-blend-mode:overlay;
+    transform:translateX(-110%);
+    animation:wipe 2.6s ease-in-out .4s forwards;
+  }
+  .squeegee{
+    position:absolute;
+    top:-14px;
+    left:-60px;
+    width:46px;
+    height:120%;
+    opacity:.9;
+    transform:translateX(-60px);
+    animation:wipeIcon 2.6s ease-in-out .4s forwards;
+  }
+  @keyframes wipe{
+    0%{transform:translateX(-110%);}
+    70%{transform:translateX(140%);}
+    100%{transform:translateX(140%);}
+  }
+  @keyframes wipeIcon{
+    0%{transform:translateX(-60px);}
+    70%{transform:translateX(calc(100% + 60px));}
+    100%{transform:translateX(calc(100% + 60px));}
+  }
+  .hero-sub{
+    margin-top:22px;
+    font-size:1.08rem;
+    line-height:1.65;
+    color:#d9ecf6;
+    max-width:520px;
+  }
+  .hero-actions{
+    margin-top:34px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .hero-stats{
+    margin-top:46px;
+    display:flex;
+    gap:34px;
+    flex-wrap:wrap;
+  }
+  .hero-stat strong{
+    display:block;
+    font-family:'Poppins',sans-serif;
+    font-size:1.7rem;
+    font-weight:800;
+    color:var(--white);
+  }
+  .hero-stat span{
+    font-size:.82rem;
+    color:#b9d6e6;
+  }
+  .hero-art{
+    position:relative;
+    justify-self:center;
+  }
+  .glass-card{
+    position:relative;
+    width:100%;
+    max-width:420px;
+    border-radius:28px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.18);
+    padding:34px;
+    backdrop-filter:blur(6px);
+  }
+  .glass-card .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,.12);
+    border-radius:999px;
+    padding:8px 16px;
+    font-size:.78rem;
+    font-weight:600;
+    color:var(--white);
+  }
+  .glass-card h3{
+    color:var(--white);
+    font-size:1.4rem;
+    margin-top:18px;
+  }
+  .glass-card p{
+    color:#cfe6f2;
+    margin-top:10px;
+    line-height:1.6;
+    font-size:.95rem;
+  }
+  .droplet-row{
+    margin-top:24px;
+    display:flex;
+    gap:10px;
+  }
+  .droplet-row .dot{
+    width:34px;height:34px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--sky), var(--blue));
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* ---------- LOGO ---------- */
+  .logo-mark{flex-shrink:0;}
+
+  /* ---------- SECTION HELPERS ---------- */
+  section{padding:96px 0;}
+  .section-head{
+    max-width:680px;
+    margin-bottom:54px;
+  }
+  .section-head h2{
+    font-size:clamp(1.7rem,3vw,2.4rem);
+    color:var(--navy);
+    margin-top:14px;
+  }
+  .section-head p{
+    margin-top:16px;
+    color:var(--gray);
+    font-size:1.04rem;
+    line-height:1.65;
+  }
+  .reveal{
+    opacity:0;
+    transform:translateY(26px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--ice);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .about-copy p{
+    color:var(--gray);
+    line-height:1.75;
+    font-size:1.02rem;
+    margin-top:16px;
+  }
+  .about-copy .quote{
+    margin-top:28px;
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    color:var(--navy);
+    font-size:1.18rem;
+    border-left:3px solid var(--blue);
+    padding-left:18px;
+  }
+  .about-visual{
+    position:relative;
+    border-radius:var(--radius);
+    background:linear-gradient(160deg, var(--blue), var(--navy));
+    min-height:360px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .about-visual svg{width:62%;max-width:280px;}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+  }
+  .service-card{
+    border-radius:var(--radius);
+    border:1px solid #e7edf1;
+    padding:34px 28px;
+    background:var(--white);
+    box-shadow:var(--shadow);
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .service-card:hover{transform:translateY(-6px);border-color:var(--sky);}
+  .service-icon{
+    width:54px;height:54px;
+    border-radius:16px;
+    background:var(--ice);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+  }
+  .service-card h3{
+    font-size:1.18rem;
+    color:var(--navy);
+  }
+  .service-card p{
+    margin-top:12px;
+    color:var(--gray);
+    line-height:1.6;
+    font-size:.96rem;
+  }
+
+  /* ---------- WHY US ---------- */
+  .why{background:var(--navy);color:var(--white);}
+  .why .section-head h2{color:var(--white);}
+  .why .section-head p{color:#bcd6e4;}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .why-card{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:var(--radius);
+    padding:30px 26px;
+  }
+  .why-card .num{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:.85rem;
+    color:var(--sky);
+    letter-spacing:.08em;
+  }
+  .why-card h3{
+    margin-top:14px;
+    font-size:1.12rem;
+    color:var(--white);
+  }
+  .why-card p{
+    margin-top:10px;
+    color:#c9dfeb;
+    font-size:.94rem;
+    line-height:1.6;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:50px;
+  }
+  .contact-info{
+    background:var(--ice);
+    border-radius:var(--radius);
+    padding:36px 30px;
+  }
+  .contact-info h3{
+    color:var(--navy);
+    font-size:1.3rem;
+  }
+  .contact-line{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    margin-top:22px;
+  }
+  .contact-line .ic{
+    width:38px;height:38px;
+    border-radius:10px;
+    background:var(--white);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    box-shadow:0 6px 14px -8px rgba(10,47,74,.3);
+  }
+  .contact-line strong{display:block;color:var(--navy);font-size:.92rem;}
+  .contact-line a, .contact-line span{color:var(--gray);font-size:.92rem;}
+  .contact-line a:hover{color:var(--blue);}
+
+  form{
+    background:var(--white);
+    border:1px solid #e7edf1;
+    border-radius:var(--radius);
+    padding:36px;
+    box-shadow:var(--shadow);
+  }
+  .form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  .field{margin-bottom:18px;}
+  .field label{
+    display:block;
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--navy);
+    margin-bottom:7px;
+  }
+  .field input, .field textarea{
+    width:100%;
+    border:1.5px solid #dde6ea;
+    border-radius:12px;
+    padding:12px 14px;
+    font-family:'Inter',sans-serif;
+    font-size:.95rem;
+    color:var(--ink);
+    background:#fafcfd;
+    transition:border-color .18s ease, box-shadow .18s ease;
+  }
+  .field input:focus, .field textarea:focus{
+    outline:none;
+    border-color:var(--blue);
+    box-shadow:0 0 0 4px rgba(30,136,199,.12);
+  }
+  .field textarea{min-height:120px;resize:vertical;}
+  .form-note{
+    margin-top:14px;
+    font-size:.84rem;
+    color:var(--gray);
+  }
+  .form-success{
+    display:none;
+    margin-top:14px;
+    font-size:.88rem;
+    font-weight:600;
+    color:#1c7c4d;
+    background:#e9f7ef;
+    border-radius:10px;
+    padding:12px 14px;
+  }
+  .form-success.show{display:block;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--navy-deep);
+    color:#cfe1ea;
+    padding:60px 0 30px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr;
+    gap:40px;
+  }
+  .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .footer-brand strong{color:var(--white);font-family:'Poppins',sans-serif;font-size:1.1rem;}
+  footer p{font-size:.9rem;line-height:1.6;color:#9fbccb;}
+  footer h4{
+    color:var(--white);
+    font-size:.85rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;}
+  footer ul a{font-size:.92rem;color:#cfe1ea;cursor:pointer;}
+  footer ul a:hover{color:var(--sky);}
+  .footer-bottom{
+    margin-top:46px;
+    padding-top:22px;
+    border-top:1px solid rgba(255,255,255,.08);
+    font-size:.8rem;
+    color:#7d9aab;
+    text-align:center;
+  }
+
+  /* ---------- MODAL ---------- */
+  .modal-backdrop{
+    position:fixed;inset:0;
+    background:rgba(7,33,51,.6);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:200;
+    padding:20px;
+  }
+  .modal-backdrop.open{display:flex;}
+  .modal{
+    background:var(--white);
+    border-radius:20px;
+    max-width:560px;
+    width:100%;
+    max-height:80vh;
+    overflow-y:auto;
+    padding:34px;
+    position:relative;
+  }
+  .modal h3{color:var(--navy);font-size:1.3rem;margin-bottom:16px;}
+  .modal p{color:var(--gray);font-size:.94rem;line-height:1.65;margin-bottom:12px;}
+  .modal-close{
+    position:absolute;top:18px;right:18px;
+    background:var(--ice);
+    border:none;
+    width:34px;height:34px;
+    border-radius:50%;
+    font-size:1rem;
+    cursor:pointer;
+    color:var(--navy);
+  }
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{margin-top:30px;}
+    .about-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;gap:28px;}
+    section{padding:70px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">
+      <svg class="logo-mark" width="42" height="42" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M72,18 A36,36 0 1 0 72,82" stroke="#1E88C7" stroke-width="13" fill="none" stroke-linecap="round"/>
+        <path d="M63,29 A24,24 0 1 0 63,71" stroke="#6EC8EC" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M84 22 l3.2 -3.2 l3.2 3.2 l-3.2 3.2 z" fill="#AEE3F7"/>
+        <path d="M90 33 l2.2 -2.2 l2.2 2.2 l-2.2 2.2 z" fill="#AEE3F7"/>
+      </svg>
+      <div class="brand-text">
+        <strong>KAWA'S</strong>
+        <span>Reinigungsservice · Paderborn</span>
+      </div>
+    </div>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#ueber-uns">Über uns</a></li>
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#warum-wir">Warum wir</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+4917657948833" class="btn btn-dark">Anrufen</a>
+      <a href="#kontakt" class="btn btn-primary">Angebot anfragen</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Gebäudereinigung in Paderborn &amp; Umgebung</span>
+      <div class="wipe-wrap">
+        <h1 class="wipe-headline">Saubere Räume,<br><em>verlässliche Arbeit.</em></h1>
+        <div class="squeegee" aria-hidden="true">
+          <svg width="46" height="100%" viewBox="0 0 46 220" preserveAspectRatio="none">
+            <rect x="18" y="0" width="6" height="160" fill="#cfe6f2" opacity="0.7"/>
+            <rect x="2" y="150" width="38" height="20" rx="6" fill="#6EC8EC"/>
+            <rect x="2" y="150" width="38" height="20" rx="6" fill="none" stroke="#fff" stroke-opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="wipe-veil" aria-hidden="true"></div>
+      </div>
+      <p class="hero-sub">KAWA'S Reinigungsservice übernimmt die Unterhalts-, Fenster- und Sonderreinigung für Büros, Praxen und Geschäftsräume im Großraum Paderborn — pünktlich, gründlich und mit Blick fürs Detail.</p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn btn-primary">Kostenlose Beratung anfragen</a>
+        <a href="#leistungen" class="btn btn-ghost">Leistungen ansehen</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>100%</strong><span>Termintreue</span></div>
+        <div class="hero-stat"><strong>OWL</strong><span>Einsatzgebiet</span></div>
+        <div class="hero-stat"><strong>Privat &amp; Gewerbe</strong><span>Kundenkreis</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="glass-card">
+        <span class="badge">● Sofort erreichbar</span>
+        <h3>Ihr Reinigungswunsch — diskret &amp; zuverlässig erfüllt.</h3>
+        <p>Ob einmalige Grundreinigung oder regelmäßige Unterhaltsreinigung: Wir stimmen Termine und Umfang genau auf Ihren Betrieb ab.</p>
+        <div class="droplet-row" aria-hidden="true">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="ueber-uns">
+  <div class="wrap about-grid">
+    <div class="about-copy reveal">
+      <span class="eyebrow">Über uns</span>
+      <h2>Reinigung mit Anspruch — geleitet von Kawa Hasan.</h2>
+      <p>KAWA'S Reinigungsservice ist Ihr Ansprechpartner für professionelle Gebäudereinigung in Paderborn. Wir betreuen Büros, Praxen, Ladenflächen und Privatobjekte und legen dabei Wert auf Sorgfalt, Pünktlichkeit und einen persönlichen Kontakt zu unseren Kund:innen.</p>
+      <p>Jeder Auftrag wird individuell besprochen: Reinigungsumfang, Intervalle und besondere Anforderungen Ihres Betriebs stimmen wir vorab genau mit Ihnen ab — damit Ihr Tagesablauf ungestört bleibt.</p>
+      <p class="quote">„Saubere Sache — das ist unser Versprechen an Sie.“</p>
+    </div>
+    <div class="about-visual reveal">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <path d="M150,30 A75,75 0 1 0 150,170" stroke="#ffffff" stroke-width="20" fill="none" stroke-linecap="round" opacity="0.95"/>
+        <path d="M132,55 A50,50 0 1 0 132,145" stroke="#A8DDF0" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <path d="M168 38 l6 -6 l6 6 l-6 6 z" fill="#EAF6FC"/>
+        <path d="M180 60 l4 -4 l4 4 l-4 4 z" fill="#EAF6FC"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="leistungen">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Leistungen</span>
+      <h2>Was wir für Sie übernehmen</h2>
+      <p>Von der laufenden Unterhaltsreinigung bis zur gründlichen Sonderreinigung — wir passen unsere Leistungen an Ihre Räume und Anforderungen an.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 11h16M6 11V7a6 6 0 0 1 12 0v4" stroke="#1E88C7" stroke-width="2" stroke-linecap="round"/><rect x="4" y="11" width="16" height="9" rx="2" stroke="#1E88C7" stroke-width="2"/></svg>
+        </div>
+        <h3>Büro- &amp; Unterhaltsreinigung</h3>
+        <p>Regelmäßige Reinigung von Büros, Praxen und Geschäftsräumen — verbindlich nach Ihrem Wunschintervall.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#1E88C7" stroke-width="2"/><path d="M12 3v18M4 12h16" stroke="#1E88C7" stroke-width="2"/></svg>
+        </div>
+        <h3>Fenster- &amp; Glasreinigung</h3>
+        <p>Streifenfreie Reinigung von Fenstern, Glasfronten und Türen — innen und außen, auch in größeren Höhen.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3c-3 4-6 7.5-6 11a6 6 0 0 0 12 0c0-3.5-3-7-6-11z" stroke="#1E88C7" stroke-width="2"/></svg>
+        </div>
+        <h3>Grund- &amp; Sonderreinigung</h3>
+        <p>Gründliche Grundreinigung bei Ein- und Auszug sowie individuelle Sonderaufgaben nach Absprache.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="warum-wir">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Warum KAWA'S</span>
+      <h2>Darauf können Sie sich verlassen</h2>
+      <p>Drei Werte, die unsere Arbeit prägen — bei jedem Auftrag, ob klein oder groß.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <span class="num">01</span>
+        <h3>Termintreue</h3>
+        <p>Vereinbarte Zeiten halten wir ein — Ihr Betriebsablauf bleibt ungestört.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="num">02</span>
+        <h3>Persönlicher Kontakt</h3>
+        <p>Sie sprechen direkt mit uns — kurze Wege, klare Absprachen, schnelle Reaktion.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="num">03</span>
+        <h3>Sorgfalt im Detail</h3>
+        <p>Wir reinigen gründlich und diskret — mit Respekt für Ihre Räume und Ihre Privatsphäre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Kontakt</span>
+      <h2>Lassen Sie uns über Ihr Projekt sprechen</h2>
+      <p>Schreiben Sie uns kurz, was Sie brauchen — wir melden uns zeitnah mit einem unverbindlichen Vorschlag zurück.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Direkt erreichbar</h3>
+        <div class="contact-line">
+          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 5h18v14H3z" stroke="#1E88C7" stroke-width="2"/><path d="M3 5l9 7 9-7" stroke="#1E88C7" stroke-width="2"/></svg></span>
+          <div><strong>E-Mail</strong><a href="mailto:kawasreinigung@gmail.com">kawasreinigung@gmail.com</a></div>
+        </div>
+        <div class="contact-line">
+          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2C9.5 21 3 14.5 3 6a2 2 0 0 1 2-2z" stroke="#1E88C7" stroke-width="1.6"/></svg></span>
+          <div><strong>Telefon</strong><a href="tel:+4917657948833">+49 176 57948833</a></div>
+        </div>
+        <div class="contact-line">
+          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="#1E88C7" stroke-width="1.6"/><circle cx="12" cy="9" r="2.5" stroke="#1E88C7" stroke-width="1.6"/></svg></span>
+          <div><strong>Standort</strong><span>Tempelhofer Str. 71, 33100 Paderborn</span></div>
+        </div>
+        <div class="contact-line">
+          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#1E88C7" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="#1E88C7" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          <div><strong>Erreichbarkeit</strong><span>Mo–Sa nach Vereinbarung</span></div>
+        </div>
+      </div>
+
+      <form id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Name *</label>
+            <input id="name" name="name" type="text" required placeholder="Ihr vollständiger Name">
+          </div>
+          <div class="field">
+            <label for="email">E-Mail *</label>
+            <input id="email" name="email" type="email" required placeholder="ihre@email.de">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="phone">Telefon (optional)</label>
+            <input id="phone" name="phone" type="tel" placeholder="0176 ...">
+          </div>
+          <div class="field">
+            <label for="subject">Betreff</label>
+            <input id="subject" name="subject" type="text" placeholder="z. B. Büroreinigung">
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Nachricht *</label>
+          <textarea id="message" name="message" required placeholder="Beschreiben Sie kurz Ihr Anliegen, gewünschte Räume und Termine."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Nachricht senden</button>
+        <p class="form-note">Beim Klick öffnet sich Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht an kawasreinigung@gmail.com.</p>
+        <p class="form-success" id="form-success">Ihr E-Mail-Programm wurde geöffnet. Bitte senden Sie die Nachricht von dort aus ab.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="footer-brand">
+        <svg width="34" height="34" viewBox="0 0 100 100" aria-hidden="true">
+          <path d="M72,18 A36,36 0 1 0 72,82" stroke="#6EC8EC" stroke-width="13" fill="none" stroke-linecap="round"/>
+          <path d="M63,29 A24,24 0 1 0 63,71" stroke="#1E88C7" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </svg>
+        <strong>KAWA'S Reinigungsservice</strong>
+      </div>
+      <p>Professionelle Gebäudereinigung in Paderborn und Umgebung — für Büros, Praxen, Geschäfts- und Privaträume.</p>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="mailto:kawasreinigung@gmail.com">kawasreinigung@gmail.com</a></li>
+        <li><a href="tel:+4917657948833">+49 176 57948833</a></li>
+        <li><span>Tempelhofer Str. 71, 33100 Paderborn</span></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Rechtliches</h4>
+      <ul>
+        <li><a id="open-impressum">Impressum</a></li>
+        <li><a id="open-datenschutz">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom wrap">
+    © <span id="year"></span> KAWA'S Reinigungsservice, Kawa Hasan — Alle Rechte vorbehalten.
+  </div>
+</footer>
+
+<!-- Impressum Modal -->
+<div class="modal-backdrop" id="impressum-modal">
+  <div class="modal">
+    <button class="modal-close" data-close>×</button>
+    <h3>Impressum</h3>
+    <p><strong>Angaben gemäß § 5 TMG</strong></p>
+    <p>Kawa Hasan<br>
+    KAWA'S Reinigungsservice<br>
+    Tempelhofer Str. 71<br>
+    33100 Paderborn<br>
+    Deutschland</p>
+    <p><strong>Kontakt</strong><br>
+    Telefon: +49 176 57948833<br>
+    E-Mail: kawasreinigung@gmail.com</p>
+    <p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong><br>
+    Kawa Hasan, Anschrift wie oben.</p>
+  </div>
+</div>
+
+<!-- Datenschutz Modal -->
+<div class="modal-backdrop" id="datenschutz-modal">
+  <div class="modal">
+    <button class="modal-close" data-close>×</button>
+    <h3>Datenschutzerklärung</h3>
+    <p><strong>1. Verantwortlicher</strong><br>
+    Kawa Hasan, KAWA'S Reinigungsservice, Tempelhofer Str. 71, 33100 Paderborn, E-Mail: kawasreinigung@gmail.com.</p>
+    <p><strong>2. Verarbeitung über das Kontaktformular</strong><br>
+    Wenn Sie uns über das Kontaktformular oder per E-Mail kontaktieren, verarbeiten wir die von Ihnen angegebenen Daten (Name, E-Mail, ggf. Telefonnummer, Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage, auf Grundlage von Art. 6 Abs. 1 lit. b/f DSGVO.</p>
+    <p><strong>3. Speicherdauer</strong><br>
+    Ihre Daten werden gelöscht, sobald sie für die Bearbeitung Ihrer Anfrage nicht mehr erforderlich sind, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+    <p><strong>4. Ihre Rechte</strong><br>
+    Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Daten sowie ein Beschwerderecht bei einer Aufsichtsbehörde.</p>
+    <p style="font-size:.82rem;color:#8aa0ab;">Hinweis: Dies ist ein allgemeiner Textbaustein. Wir empfehlen, die Datenschutzerklärung vor Veröffentlichung von einer fachkundigen Person prüfen zu lassen.</p>
+  </div>
+</div>
+
+<script>
+  // Mobile nav toggle
+  const burger = document.getElementById('burger');
+  const navlinks = document.getElementById('navlinks');
+  burger.addEventListener('click', () => {
+    const isOpen = navlinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  navlinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navlinks.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Contact form -> mailto
+  const form = document.getElementById('contact-form');
+  const successMsg = document.getElementById('form-success');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const phone = form.phone.value.trim();
+    const subjectField = form.subject.value.trim();
+    const message = form.message.value.trim();
+
+    const subject = subjectField ? subjectField : 'Anfrage über die Website';
+    const bodyLines = [
+      `Name: ${name}`,
+      `E-Mail: ${email}`,
+      phone ? `Telefon: ${phone}` : null,
+      '',
+      message
+    ].filter(Boolean);
+
+    const mailto = `mailto:kawasreinigung@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+    window.location.href = mailto;
+    successMsg.classList.add('show');
+  });
+
+  // Modals
+  function setupModal(openId, modalId) {
+    const openBtn = document.getElementById(openId);
+    const modal = document.getElementById(modalId);
+    if (!openBtn || !modal) return;
+    openBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.classList.add('open');
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.hasAttribute('data-close')) {
+        modal.classList.remove('open');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') modal.classList.remove('open');
+    });
+  }
+  setupModal('open-impressum', 'impressum-modal');
+  setupModal('open-datenschutz', 'datenschutz-modal');
+
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
